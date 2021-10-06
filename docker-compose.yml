@@ -1,0 +1,35 @@
+version: "3.7"
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  bdapi:
+    image: postgres
+    restart: always
+    ports:
+      - 5434:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=apipersonal
+    volumes:
+      - pgdata:/data/postgres
+    networks:
+      - app-network
+  # api:
+  #   build: .
+  #   restart: always
+  #   ports:
+  #     - 3300:3300
+  #   volumes:
+  #     - ./:/usr/app
+  #   depends_on:
+  #     - bdapi
+  #   networks:
+  #     - app-network
+volumes:
+  pgdata:
+    driver: local
+

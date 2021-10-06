@@ -1,0 +1,4 @@
+interface IUserDTO {
+
+}
+export { IUserDTO }
