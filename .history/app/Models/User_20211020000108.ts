@@ -50,8 +50,6 @@ export default class User extends BaseModel {
     }
   }
 
-  @manyToMany(() => Role, {
-    pivotTable: 'roles_users'
-  })
+  @manyToMany(() => Role)
   public roles: ManyToMany<typeof Role>
 }

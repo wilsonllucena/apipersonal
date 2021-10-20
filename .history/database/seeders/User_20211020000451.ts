@@ -4,9 +4,6 @@ import Role from "App/Models/Role";
 import User from "App/Models/User";
 
 export default class UserSeeder extends BaseSeeder {
-
-  public static developmentOnly = true; // Só executa se etsiver no ambiente de DEV
-
 	public async run() {
 
     for (let role of Object.values(ROLES)){

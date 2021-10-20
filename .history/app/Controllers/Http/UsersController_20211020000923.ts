@@ -1,5 +1,4 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import User from 'App/Models/User';
 import { UserService } from 'App/Services/UserService';
 import { container } from 'tsyringe';
 
@@ -12,15 +11,6 @@ export default class UsersController {
     try {
       const users =  await this.userService.list();
       return response.json(users)
-    } catch (error) {
-      return response.status(error.status);
-    }
-  }
-
-  public async show({ params , response}: HttpContextContract) {
-    try {
-      const { id } = params;
-     return await User.query().preload('roles').where('id', id).firstOrFail()
     } catch (error) {
       return response.status(error.status);
     }

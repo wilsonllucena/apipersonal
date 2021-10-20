@@ -5,7 +5,7 @@ import User from "App/Models/User";
 
 export default class UserSeeder extends BaseSeeder {
 
-  public static developmentOnly = true; // Só executa se etsiver no ambiente de DEV
+  public static developmentOnly = true;
 
 	public async run() {
 
