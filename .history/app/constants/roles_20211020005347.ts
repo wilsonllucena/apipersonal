@@ -25,7 +25,7 @@ export const ROLES: Roles = SYSTEM_ROLES.reduce((roles, role) => {
 //Criar uma função que vai me ajudar a definir somentes as roles que exitem
 
 export function is(rolesNames: SystemRoles[]){
-  const rolesSlugs = rolesNames.map(roleName => ROLES[roleName].slug);
+  const rolesSlugs = rolesNames.map(roleName => ROLES[roleName]);
   return `is:${rolesSlugs.join(',')}`
 }
 

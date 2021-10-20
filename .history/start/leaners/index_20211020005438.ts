@@ -7,4 +7,4 @@ Route.group(() => {
 	Route.put("/:id", "LeanersController.update");
 	Route.delete("/:id", "LeanersController.delete");
 }).prefix("/leaners")
-	.middleware(["auth", `${is(["ADMIN", 'PERSONAL'])}`]);
+	.middleware(["auth", `${is(['ADMIN', 'PERSONAL'])}`]);
