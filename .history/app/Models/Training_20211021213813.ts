@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, HasOne, hasOne, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
 import Leaner from './Leaner';
 import TypeTraining from './TypeTraining';
 import Muscle from './Muscle';
@@ -9,7 +9,6 @@ import Repeat from './Repeat';
 import Pause from './Pause';
 import Weight from './Weight';
 import Method from './Method';
-import Leaners from 'Database/migrations/1634256056222_leaners';
 
 export default class Training extends BaseModel {
   @column({ isPrimary: true })
@@ -20,9 +19,6 @@ export default class Training extends BaseModel {
 
   @hasOne(() => TypeTraining, { foreignKey: 'type_id'})
 	type: HasOne<typeof TypeTraining>;
-
-  @column()
-  type_training: string;
 
   @column()
   muscle_id: number;
@@ -74,9 +70,4 @@ export default class Training extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
-
-  @manyToMany(() => Leaner, {
-    pivotTable: 'trainings_leaners'
-  })
-  public leaners: ManyToMany<typeof Leaner>
 }

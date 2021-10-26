@@ -1,6 +1,8 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Leaner from 'App/Models/Leaner';
 import Training from 'App/Models/Training';
+import { forIn } from 'lodash';
+
 export default class TrainingsController {
     public async index({ response }: HttpContextContract) {
         const data = await Training.all();

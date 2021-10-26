@@ -5,6 +5,6 @@ import './gender'
 import './muscles'
 import './exercicies'
 import './leaners'
-import './trainings'
+import './training'
 
 

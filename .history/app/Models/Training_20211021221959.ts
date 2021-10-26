@@ -76,7 +76,7 @@ export default class Training extends BaseModel {
   public updatedAt: DateTime
 
   @manyToMany(() => Leaner, {
-    pivotTable: 'trainings_leaners'
+    pivotTable: 'roles_users'
   })
   public leaners: ManyToMany<typeof Leaner>
 }

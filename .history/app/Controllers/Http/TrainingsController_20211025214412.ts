@@ -1,6 +1,8 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Leaner from 'App/Models/Leaner';
 import Training from 'App/Models/Training';
+import { forIn } from 'lodash';
+
 export default class TrainingsController {
     public async index({ response }: HttpContextContract) {
         const data = await Training.all();
@@ -9,7 +11,9 @@ export default class TrainingsController {
 
     public async store({ request, response }: HttpContextContract) {
         try {
+
             const trainings = request.all();
+
 
             for (const index in trainings) {
                 const data = trainings[index];
@@ -17,7 +21,7 @@ export default class TrainingsController {
                 const leaner = await Leaner.findByOrFail('id', data.leaner_id);
                 delete data.leaner_id;
 
-                const training = await Training.firstOrCreate(data)
+                const training = await Training.create(data)
 
                 await training.related('leaners').attach([leaner.id])
 
