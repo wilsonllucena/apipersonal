@@ -22,9 +22,9 @@ export default class ExerciciesController {
     return await Exercicie.query().where('id', id).firstOrFail()
   }
 
-  public async getExerciciesByMuscleId ({params}: HttpContextContract) {
-    const { muscleId } = params;
-    return await Exercicie.query().where('muscle_id', muscleId);
+  public async getExerciciesByMuscleId ({request}: HttpContextContract) {
+    const { muscleId } = request.body();
+    return await Exercicie.query().where('mucle_id', muscleId);
   }
 
   public async update ({params, request,  response}: HttpContextContract) {

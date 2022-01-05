@@ -15,7 +15,7 @@ export default class Exercicie extends BaseModel {
   @column()
   public url: string
 
-  @belongsTo(() => Muscle, { foreignKey: 'muscle_id' })
+  @belongsTo(() => Muscle)
   public muscle: BelongsTo<typeof Muscle>
 
   @column.dateTime({ autoCreate: true })

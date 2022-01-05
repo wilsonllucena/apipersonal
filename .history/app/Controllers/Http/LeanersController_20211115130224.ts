@@ -20,16 +20,7 @@ export default class LeanersController {
     const { id } = params;
     return await Leaner.query().preload('trainings').where('id', id).firstOrFail()
   }
-  public async update ({params, request,  response}: HttpContextContract) {
-    const { id } = params;
-    const leaner = await Leaner.find(id);
-    const data = request.all();
-    Object.assign(leaner, data);
-    if(leaner){
-      await leaner.save();
-    }
-    return response.status(201);
-
+  public async update ({}: HttpContextContract) {
   }
 
   public async destroy ({params, response}: HttpContextContract) {

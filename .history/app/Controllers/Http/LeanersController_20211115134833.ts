@@ -22,12 +22,10 @@ export default class LeanersController {
   }
   public async update ({params, request,  response}: HttpContextContract) {
     const { id } = params;
-    const leaner = await Leaner.find(id);
+    const leaner = await Leaner.query().preload('trainings').where('id', id).firstOrFail();
     const data = request.all();
-    Object.assign(leaner, data);
-    if(leaner){
-      await leaner.save();
-    }
+    leaner.merge(data);
+    await Leaner.updateOrCreate(id, leaner);
     return response.status(201);
 
   }

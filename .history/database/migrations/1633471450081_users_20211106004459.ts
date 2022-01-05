@@ -6,9 +6,8 @@ export default class UsersSchema extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table.integer('tenant_id')
-           .references('id')
-           .inTable('tenants')
+      table.string('tenant_id',255)
+           .references('tenants.id')
            .nullable()
            .unsigned()
            .onDelete('SET NULL')

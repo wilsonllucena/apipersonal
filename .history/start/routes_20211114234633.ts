@@ -9,7 +9,6 @@ import './exercicies'
 import './leaners'
 import './trainings'
 import './frequencies'
-import './locations'
 import './weeks'
 
 

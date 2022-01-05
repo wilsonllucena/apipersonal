@@ -24,7 +24,7 @@ export default class ExerciciesController {
 
   public async getExerciciesByMuscleId ({params}: HttpContextContract) {
     const { muscleId } = params;
-    return await Exercicie.query().where('muscle_id', muscleId);
+    return await Exercicie.query().where('mucle_id', muscleId);
   }
 
   public async update ({params, request,  response}: HttpContextContract) {

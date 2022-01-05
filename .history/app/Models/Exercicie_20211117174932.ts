@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, BelongsTo, belongsTo, column, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
 import Muscle from './Muscle';
 
 export default class Exercicie extends BaseModel {
@@ -15,8 +15,8 @@ export default class Exercicie extends BaseModel {
   @column()
   public url: string
 
-  @belongsTo(() => Muscle, { foreignKey: 'muscle_id' })
-  public muscle: BelongsTo<typeof Muscle>
+  @hasOne(() => Muscle, { foreignKey: 'muscle_id' , serializeAs: 'muscle'})
+  public muscle: HasOne<typeof Muscle>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

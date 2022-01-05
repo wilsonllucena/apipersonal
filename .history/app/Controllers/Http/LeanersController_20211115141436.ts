@@ -25,8 +25,10 @@ export default class LeanersController {
     const leaner = await Leaner.find(id);
     const data = request.all();
     Object.assign(leaner, data);
+
+    console.log(leaner);return;
     if(leaner){
-      await leaner.save();
+      leaner.save();
     }
     return response.status(201);
 
